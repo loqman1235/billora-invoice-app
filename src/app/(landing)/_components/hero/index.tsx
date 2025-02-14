@@ -8,7 +8,7 @@ export const HeroSection = async () => {
 
   return (
     <div className="flex h-[calc(100vh-4rem)] w-full flex-col items-center justify-center gap-5 p-5 text-center">
-      <h1 className="text-4xl font-extrabold tracking-tight md:text-7xl">
+      <h1 className="text-4xl font-black tracking-tight md:text-7xl">
         Create. Send. Get Paid. <br />
         <span className="text-gradient">That Simple</span>
       </h1>

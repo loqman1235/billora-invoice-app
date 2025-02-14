@@ -77,7 +77,7 @@ export const SignInForm = () => {
         <Button disabled={isPending} type="submit" className="w-full">
           {isPending ? (
             <>
-              <LoaderCircle className="mr-2 animate-spin" /> Sign In
+              <LoaderCircle className="mr-2 animate-spin" />
             </>
           ) : (
             "Sign In"

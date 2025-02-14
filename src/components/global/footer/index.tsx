@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <div className="flex h-16 w-full items-center justify-center text-center">
+    <div className="flex h-14 w-full items-center justify-center text-center">
       <p className="text-sm">
         {process.env.APP_NAME} &copy; {new Date().getFullYear()} - By{" "}
         <a

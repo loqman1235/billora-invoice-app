@@ -105,7 +105,7 @@ export const SignUpForm = () => {
         <Button disabled={isPending} type="submit" className="w-full">
           {isPending ? (
             <>
-              <LoaderCircle className="size-4 animate-spin" /> Sign Up
+              <LoaderCircle className="size-4 animate-spin" />
             </>
           ) : (
             "Sign Up"

@@ -48,6 +48,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  invoices      Invoice[]
 
   @@map("users")
 }
@@ -70,4 +71,29 @@ model VerificationCode {
 
   @@unique([email, code], name: "email_code")
   @@map("verification_codes")
+}
+
+model Invoice {
+  id           String        @id @default(cuid())
+  billingName  String
+  billingEmail String
+  amount       Float
+  description  String?
+  status       InvoiceStatus @default(open)
+  userId       String
+  user         User          @relation(fields: [userId], references: [id])
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  @@map("invoices")
+}
+
+enum InvoiceStatus {
+  open
+  paid
+  void
+  uncollectible
+  canceled
+  pending
+  failed
 }
