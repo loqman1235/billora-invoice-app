@@ -73,5 +73,12 @@ export const invoiceColumns: ColumnDef<Invoice>[] = [
   {
     accessorKey: "amount",
     header: "Amount",
+    cell: ({ getValue }) => {
+      const amount = getValue() as number;
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+      }).format(amount);
+    },
   },
 ];

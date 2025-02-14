@@ -6,7 +6,9 @@ import { invoiceColumns } from "../invoice-columns";
 import { prisma } from "@/lib/prisma";
 
 export const Invoices = async () => {
-  const invoices = await prisma.invoice.findMany();
+  const invoices = await prisma.invoice.findMany({
+    orderBy: { createdAt: "desc" },
+  });
 
   return (
     <div className="flex flex-col gap-5">

@@ -3,6 +3,7 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -14,12 +15,12 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-interface DataTableProps<TData, TValue> {
+interface DataTableProps<TData extends { amount: number }, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-export const DataTable = <TData, TValue>({
+export const DataTable = <TData extends { amount: number }, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) => {
@@ -28,6 +29,13 @@ export const DataTable = <TData, TValue>({
     data,
     getCoreRowModel: getCoreRowModel(),
   });
+
+  // Calculate total amount
+  const totalAmount = data.reduce((sum, row) => sum + row.amount, 0);
+  const formattedTotal = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(totalAmount);
 
   return (
     <div className="rounded-md border">
@@ -70,6 +78,17 @@ export const DataTable = <TData, TValue>({
             </TableRow>
           )}
         </TableBody>
+        <TableFooter>
+          <TableRow>
+            <TableCell
+              colSpan={columns.length - 1}
+              className="text-left font-bold"
+            >
+              Total Amount
+            </TableCell>
+            <TableCell className="font-bold">{formattedTotal}</TableCell>
+          </TableRow>
+        </TableFooter>
       </Table>
     </div>
   );
