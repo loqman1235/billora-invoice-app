@@ -28,7 +28,8 @@ export const Invoices = async () => {
           </Link>
         </Button>
       </div>
-      {/* TABLE */}
+
+      {/* TODO: ADD PAGINATION TO TABLE */}
       <div>
         <DataTable columns={invoiceColumns} data={invoices} />
       </div>
