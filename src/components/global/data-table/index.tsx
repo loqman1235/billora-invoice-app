@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -12,6 +13,7 @@ import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 
@@ -28,6 +30,13 @@ export const DataTable = <TData extends { amount: number }, TValue>({
     columns,
     data,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    initialState: {
+      pagination: {
+        pageIndex: 0,
+        pageSize: 5,
+      },
+    },
   });
 
   // Calculate total amount
@@ -90,6 +99,24 @@ export const DataTable = <TData extends { amount: number }, TValue>({
           </TableRow>
         </TableFooter>
       </Table>
+      <div className="mt-4 flex items-center justify-between p-4">
+        <Button
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          Previous
+        </Button>
+        <span>
+          Page {table.getState().pagination.pageIndex + 1} of{" "}
+          {table.getPageCount()}
+        </span>
+        <Button
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+        >
+          Next
+        </Button>
+      </div>
     </div>
   );
 };
