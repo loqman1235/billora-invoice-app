@@ -63,7 +63,7 @@ export const invoiceColumns: ColumnDef<Invoice>[] = [
 
       return (
         <span
-          className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${statusClass}`}
+          className={`inline-flex rounded-full px-2 text-xs font-semibold capitalize leading-5 ${statusClass}`}
         >
           {statusText}
         </span>
