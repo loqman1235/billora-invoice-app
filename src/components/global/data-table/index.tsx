@@ -2,6 +2,13 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
   Table,
   TableBody,
   TableCell,
@@ -12,6 +19,7 @@ import {
 } from "@/components/ui/table";
 import {
   ColumnDef,
+  ColumnFiltersState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
@@ -26,11 +34,22 @@ interface DataTableProps<TData extends { amount: number }, TValue> {
   data: TData[];
 }
 
+const statuses = [
+  "open",
+  "paid",
+  "void",
+  "uncollectible",
+  "canceled",
+  "pending",
+] as const;
+
 export const DataTable = <TData extends { amount: number }, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) => {
+  const [columnFilters, setColumnsFilters] = useState<ColumnFiltersState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
   const table = useReactTable({
     columns,
     data,
@@ -39,6 +58,7 @@ export const DataTable = <TData extends { amount: number }, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
     state: {
       globalFilter,
+      columnFilters,
     },
     initialState: {
       pagination: {
@@ -47,6 +67,7 @@ export const DataTable = <TData extends { amount: number }, TValue>({
       },
     },
     onGlobalFilterChange: setGlobalFilter,
+    onColumnFiltersChange: setColumnsFilters,
   });
 
   // Calculate total amount
@@ -56,16 +77,45 @@ export const DataTable = <TData extends { amount: number }, TValue>({
     currency: "USD",
   }).format(totalAmount);
 
+  console.log(table.getState().columnFilters);
+  console.log(table.getColumn("status")?.getCanFilter());
+  console.log(table.getColumn("billingEmail")?.getCanFilter());
+
   return (
     <div>
-      <div className="relative mb-4 w-full">
-        <Input
-          placeholder="Search..."
-          value={globalFilter}
-          onChange={(e) => setGlobalFilter(e.target.value)}
-          className="pl-10"
-        />
-        <SearchIcon className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+      <div className="mb-4 flex items-center justify-between gap-4">
+        <div className="relative w-full">
+          <Input
+            placeholder="Search..."
+            value={globalFilter}
+            onChange={(e) => setGlobalFilter(e.target.value)}
+            className="pl-10"
+          />
+          <SearchIcon className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+        </div>
+
+        <Select
+          value={selectedStatus ?? undefined}
+          onValueChange={(value) => {
+            setSelectedStatus(value === "all" ? null : value);
+            table
+              .getColumn("status")
+              ?.setFilterValue(value === "all" ? undefined : value);
+          }}
+        >
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Filter by status" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All</SelectItem>{" "}
+            {/* Use "all" instead of an empty string */}
+            {statuses.map((status) => (
+              <SelectItem key={status} value={status}>
+                {status.charAt(0).toUpperCase() + status.slice(1)}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
       <div className="rounded-md border">
         <Table>
