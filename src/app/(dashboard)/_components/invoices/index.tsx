@@ -1,6 +1,6 @@
 import { DataTable } from "@/components/global/data-table";
 import { Button } from "@/components/ui/button";
-import { PlusIcon } from "lucide-react";
+import { PlusCircleIcon } from "lucide-react";
 import Link from "next/link";
 import { invoiceColumns } from "../invoice-columns";
 import { prisma } from "@/lib/prisma";
@@ -24,7 +24,7 @@ export const Invoices = async () => {
         </div>
         <Button size="sm" asChild>
           <Link href="/dashboard/invoices/new">
-            <PlusIcon className="size-4" /> Create Invoice
+            <PlusCircleIcon className="size-4" /> Create Invoice
           </Link>
         </Button>
       </div>
