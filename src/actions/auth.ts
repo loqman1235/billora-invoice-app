@@ -5,16 +5,19 @@ import { getUserByEmail, getVerificationTokenByToken } from "@/lib/db";
 import { sendVerificationCode, sendVerificationToken } from "@/lib/mail";
 import { prisma } from "@/lib/prisma";
 import { DEFAULT_REDIRECT } from "@/lib/routes";
-import { SignInSchema, signInSchema } from "@/lib/schemas/sign-in";
-import { signUpSchema, SignUpSchema } from "@/lib/schemas/sign-up";
+import { createSignInSchema, SignInSchema } from "@/lib/schemas/sign-in";
+import { createSignUpSchema, SignUpSchema } from "@/lib/schemas/sign-up";
 import {
   generateVerificationCode,
   generateVerificationToken,
 } from "@/lib/token";
 import bcrypt from "bcryptjs";
 import { AuthError } from "next-auth";
+import { getTranslations } from "next-intl/server";
 
 export const signUpAction = async (prevState: unknown, data: SignUpSchema) => {
+  const t = await getTranslations("Auth");
+  const signUpSchema = createSignUpSchema(t);
   const parsedData = signUpSchema.safeParse(data);
 
   if (!parsedData.success) {
@@ -36,7 +39,7 @@ export const signUpAction = async (prevState: unknown, data: SignUpSchema) => {
     if (emailExists) {
       return {
         success: false,
-        error: "Email already exists",
+        error: t("messages.errors.form.email.taken"),
       };
     }
 
@@ -73,6 +76,8 @@ export const signInAction = async (
   previousState: unknown,
   data: SignInSchema,
 ) => {
+  const t = await getTranslations("Auth");
+  const signInSchema = createSignInSchema(t);
   const parsedFields = signInSchema.safeParse(data);
 
   if (!parsedFields.success) {
@@ -94,15 +99,15 @@ export const signInAction = async (
       switch (error.type) {
         case "CredentialsSignin":
           return {
-            globalError: "Invalid credentials",
+            globalError: t("messages.errors.invalidCredentials"),
           };
         case "CallbackRouteError":
           return {
-            globalError: "Invalid credentials",
+            globalError: t("messages.errors.invalidCredentials"),
           };
         default:
           return {
-            globalError: "Invalid credentials",
+            globalError: t("messages.errors.invalidCredentials"),
           };
       }
     }

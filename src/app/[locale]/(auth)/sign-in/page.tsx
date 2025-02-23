@@ -6,13 +6,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { SignInForm } from "../_components/sign-in-form";
+import { getTranslations } from "next-intl/server";
 
-const SignInPage = () => {
+const SignInPage = async () => {
+  const t = await getTranslations("Auth");
+
   return (
     <Card className="min-w-[400px]">
       <CardHeader>
-        <CardTitle>Sign In</CardTitle>
-        <CardDescription>Sign in to your account</CardDescription>
+        <CardTitle>{t("SignInPage.title")}</CardTitle>
+        <CardDescription>{t("SignInPage.description")}</CardDescription>
       </CardHeader>
       <CardContent>
         <SignInForm />

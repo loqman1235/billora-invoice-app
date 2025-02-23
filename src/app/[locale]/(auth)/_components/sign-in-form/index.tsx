@@ -11,15 +11,19 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { SignInSchema, signInSchema } from "@/lib/schemas/sign-in";
+import { createSignInSchema, SignInSchema } from "@/lib/schemas/sign-in";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoaderCircle } from "lucide-react";
 import Link from "next/link";
 import { startTransition, useActionState } from "react";
 import { useForm } from "react-hook-form";
 import { GoogleButton } from "../google-button";
+import { useTranslations } from "next-intl";
 
 export const SignInForm = () => {
+  const t = useTranslations("Auth");
+  const signInSchema = createSignInSchema(t);
+
   const form = useForm<SignInSchema>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -47,9 +51,12 @@ export const SignInForm = () => {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>{t("SignInPage.form.email.label")}</FormLabel>
               <FormControl>
-                <Input placeholder="Enter email " {...field} />
+                <Input
+                  placeholder={t("SignInPage.form.email.placeholder")}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -60,11 +67,11 @@ export const SignInForm = () => {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>{t("SignInPage.form.password.label")}</FormLabel>
               <FormControl>
                 <Input
                   type="password"
-                  placeholder="Enter password "
+                  placeholder={t("SignInPage.form.password.placeholder")}
                   {...field}
                 />
               </FormControl>
@@ -80,23 +87,25 @@ export const SignInForm = () => {
               <LoaderCircle className="mr-2 animate-spin" />
             </>
           ) : (
-            "Sign In"
+            t("SignInPage.form.submit")
           )}
         </Button>
         <div className="flex items-center justify-center space-x-4">
           <div className="h-px grow bg-border" />
-          <span className="text-bord text-sm font-medium">or</span>
+          <span className="text-bord text-sm font-medium">
+            {t("SignInPage.form.or")}
+          </span>
           <div className="h-px grow bg-border" />
         </div>
         <GoogleButton />
         <p className="text-center text-sm text-muted-foreground">
-          Don&apos;t have an account?{" "}
+          {t("SignInPage.form.dontHaveAccount")}{" "}
           <Link
             href="/sign-up"
             className="text-primary underline-offset-4 hover:underline"
           >
             {" "}
-            Sign Up
+            {t("SignInPage.form.signUp")}
           </Link>
         </p>
       </form>

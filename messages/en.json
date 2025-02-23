@@ -1,0 +1,91 @@
+{
+  "common": {
+    "goBack": "Back"
+  },
+  "Navbar": {
+    "AvatarDropdown": {
+      "profile": "Profile",
+      "billing": "Billing",
+      "team": "Team",
+      "logout": "Logout"
+    },
+    "LoginButton": "Sign In",
+    "RegisterButton": "Get Started"
+  },
+  "LandingPage": {
+    "HeroSection": {
+      "title": "Create. Send. Get Paid. ",
+      "title2": "That Simple",
+      "description": "Generate invoices in seconds, send them with a click, and receive payments without the hassle.",
+      "button": "Start for Free",
+      "button2": "Visit Dashboard"
+    },
+    "Footer": {
+      "copyright": "By Loqmane Djefafla"
+    }
+  },
+  "Auth": {
+    "SignInPage": {
+      "title": "Sign In",
+      "description": "Sign in to your account",
+      "form": {
+        "email": {
+          "label": "Email",
+          "placeholder": "Enter your email"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Enter your password"
+        },
+        "or": "or",
+        "dontHaveAccount": "Don't have an account?",
+        "signUp": "Sign Up",
+        "submit": "Sign In"
+      }
+    },
+
+    "SignUpPage": {
+      "title": "Sign Up",
+      "description": "Create your account",
+      "form": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Enter your name"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Enter your email"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Enter your password"
+        },
+        "or": "or",
+        "alreadyHaveAccount": "Already have an account?",
+        "signIn": "Sign In",
+        "submit": "Sign Up"
+      }
+    },
+
+    "messages": {
+      "errors": {
+        "form": {
+          "name": {
+            "required": "Name is required"
+          },
+          "email": {
+            "required": "Email is required",
+            "invalid": "Invalid email",
+            "taken": "Email already taken"
+          },
+          "password": {
+            "required": "Password is required"
+          }
+        },
+        "invalidCredentials": "Invalid credentials",
+        "serverError": "Server error"
+      }
+    },
+    "google": "Continue with Google"
+  }
+}

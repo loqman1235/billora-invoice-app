@@ -11,7 +11,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { SignUpSchema, signUpSchema } from "@/lib/schemas/sign-up";
+import { SignUpSchema, createSignUpSchema } from "@/lib/schemas/sign-up";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoaderCircle } from "lucide-react";
 import Link from "next/link";
@@ -20,8 +20,12 @@ import { startTransition, useActionState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { GoogleButton } from "../google-button";
+import { useTranslations } from "next-intl";
 
 export const SignUpForm = () => {
+  const t = useTranslations("Auth");
+  const signUpSchema = createSignUpSchema(t);
+
   const router = useRouter();
   const form = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
@@ -60,9 +64,12 @@ export const SignUpForm = () => {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>{t("SignUpPage.form.name.label")}</FormLabel>
               <FormControl>
-                <Input placeholder="Enter name " {...field} />
+                <Input
+                  placeholder={t("SignUpPage.form.name.placeholder")}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -74,9 +81,12 @@ export const SignUpForm = () => {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>{t("SignUpPage.form.email.label")}</FormLabel>
               <FormControl>
-                <Input placeholder="Enter email " {...field} />
+                <Input
+                  placeholder={t("SignUpPage.form.email.placeholder")}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -88,11 +98,11 @@ export const SignUpForm = () => {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>{t("SignUpPage.form.password.label")}</FormLabel>
               <FormControl>
                 <Input
                   type="password"
-                  placeholder="Enter password "
+                  placeholder={t("SignUpPage.form.password.placeholder")}
                   {...field}
                 />
               </FormControl>
@@ -108,23 +118,25 @@ export const SignUpForm = () => {
               <LoaderCircle className="size-4 animate-spin" />
             </>
           ) : (
-            "Sign Up"
+            t("SignUpPage.form.submit")
           )}
         </Button>
         <div className="flex items-center justify-center space-x-4">
           <div className="h-px grow bg-border" />
-          <span className="text-bord text-sm font-medium">or</span>
+          <span className="text-bord text-sm font-medium">
+            {t("SignUpPage.form.or")}
+          </span>
           <div className="h-px grow bg-border" />
         </div>
         <GoogleButton />
         <p className="text-center text-sm text-muted-foreground">
-          Already have an account?{" "}
+          {t("SignUpPage.form.alreadyHaveAccount")}
           <Link
             href="/sign-in"
             className="text-primary underline-offset-4 hover:underline"
           >
             {" "}
-            Sign In
+            {t("SignUpPage.form.signIn")}
           </Link>
         </p>
       </form>

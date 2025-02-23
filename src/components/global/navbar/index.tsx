@@ -3,9 +3,12 @@ import { Brand } from "../brand";
 import { Button } from "@/components/ui/button";
 import { auth } from "@/auth";
 import { UserAvatar } from "../user-avatar";
+import { getTranslations } from "next-intl/server";
+import { LangSwitcher } from "../lang-switcher";
 
 export const Navbar = async () => {
   const session = await auth();
+  const t = await getTranslations("Navbar");
 
   return (
     <header className="h-16 w-full">
@@ -21,13 +24,16 @@ export const Navbar = async () => {
         ) : (
           <ul className="flex h-full items-center gap-5">
             <li>
+              <LangSwitcher />
+            </li>
+            <li>
               <Button variant="ghost" asChild>
-                <Link href="/sign-in">Sign In</Link>
+                <Link href="/sign-in">{t("LoginButton")}</Link>
               </Button>
             </li>
             <li>
               <Button asChild>
-                <Link href="/sign-in">Get Started</Link>
+                <Link href="/sign-in">{t("RegisterButton")}</Link>
               </Button>
             </li>
           </ul>

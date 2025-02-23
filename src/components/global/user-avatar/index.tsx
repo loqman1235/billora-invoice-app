@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { CreditCard, LogOutIcon, UserIcon, Users } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 type Props = {
   name?: string | undefined;
@@ -19,6 +20,8 @@ type Props = {
 };
 
 export const UserAvatar = ({ name, image, email }: Props) => {
+  const t = useTranslations("Navbar");
+
   const initials = name ? name.slice(0, 1).toUpperCase() : "U";
   return (
     <DropdownMenu>
@@ -40,15 +43,15 @@ export const UserAvatar = ({ name, image, email }: Props) => {
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <UserIcon className="mr-2 size-4" />
-          Profile
+          {t("AvatarDropdown.profile")}
         </DropdownMenuItem>
         <DropdownMenuItem>
           <CreditCard className="mr-2 size-4" />
-          Billing
+          {t("AvatarDropdown.billing")}
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Users className="mr-2 size-4" />
-          Team
+          {t("AvatarDropdown.team")}
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
@@ -56,7 +59,7 @@ export const UserAvatar = ({ name, image, email }: Props) => {
           className="text-destructive hover:bg-red-50"
         >
           <LogOutIcon className="mr-2 size-4" />
-          Sign Out
+          {t("AvatarDropdown.logout")}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

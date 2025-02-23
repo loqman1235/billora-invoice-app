@@ -1,0 +1,90 @@
+{
+  "common": {
+    "goBack": "رجوع"
+  },
+  "Navbar": {
+    "AvatarDropdown": {
+      "profile": "الملف الشخصي",
+      "billing": "الفوترة",
+      "team": "الفريق",
+      "logout": "تسجيل الخروج"
+    },
+    "LoginButton": "تسجيل الدخول",
+    "RegisterButton": "إنشاء حساب"
+  },
+  "LandingPage": {
+    "HeroSection": {
+      "title": "أنشئ. أرسل. احصل على أموالك. ",
+      "title2": "ببساطة",
+      "description": "قم بإنشاء الفواتير في ثوانٍ، وأرسلها بنقرة واحدة، وتلقَّ المدفوعات دون عناء.",
+      "button": "ابدأ مجانًا",
+      "button2": "زيارة لوحة التحكم"
+    },
+    "Footer": {
+      "copyright": "بواسطة لقمان جفافلة"
+    }
+  },
+  "Auth": {
+    "SignInPage": {
+      "title": "تسجيل الدخول",
+      "description": "قم بتسجيل الدخول إلى حسابك",
+      "form": {
+        "email": {
+          "label": "البريد الإلكتروني",
+          "placeholder": "أدخل بريدك الإلكتروني"
+        },
+        "password": {
+          "label": "كلمة المرور",
+          "placeholder": "أدخل كلمة المرور الخاصة بك"
+        },
+        "or": "أو",
+        "dontHaveAccount": "ليس لديك حساب؟",
+        "signUp": "أنشىء حساب",
+        "submit": "تسجيل الدخول"
+      }
+    },
+
+    "SignUpPage": {
+      "title": "إنشاء حساب",
+      "description": "قم بإنشاء حسابك الآن",
+      "form": {
+        "name": {
+          "label": "اسم المستخدم",
+          "placeholder": "ادخل اسم المستخدم"
+        },
+        "email": {
+          "label": "البريد الإلكتروني",
+          "placeholder": "أدخل بريدك الإلكتروني"
+        },
+        "password": {
+          "label": "كلمة المرور",
+          "placeholder": "أدخل كلمة المرور الخاصة بك"
+        },
+        "or": "أو",
+        "alreadyHaveAccount": "هل لديك حساب؟",
+        "signIn": "سجل الدخول",
+        "submit": "إنشاء حساب"
+      }
+    },
+    "messages": {
+      "errors": {
+        "form": {
+          "name": {
+            "required": "يرجى ادخال اسم المستخدم"
+          },
+          "email": {
+            "required": "يرجى ادخال بريد الكتروني",
+            "invalid": "البريد الالكتروني غير صالح",
+            "taken": "البريد المدخل مستخدم"
+          },
+          "password": {
+            "required": "يرجى ادخال كلمة المرور"
+          }
+        },
+        "invalidCredentials": "البيانات التي تم ادخالها غير صحيحة",
+        "serverError": "خطأ في الخادم"
+      }
+    },
+    "google": "المتابعة باستخدام جوجل"
+  }
+}

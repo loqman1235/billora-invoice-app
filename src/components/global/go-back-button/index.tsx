@@ -2,9 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowLeftIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
 export const GoBackButton = () => {
+  const t = useTranslations("common");
   const router = useRouter();
 
   return (
@@ -15,7 +17,7 @@ export const GoBackButton = () => {
       onClick={() => router.back()}
     >
       <ArrowLeftIcon />
-      Back
+      {t("goBack")}
     </Button>
   );
 };

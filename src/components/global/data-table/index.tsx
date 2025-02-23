@@ -86,7 +86,7 @@ export const DataTable = <TData extends { amount: number }, TValue>({
       <div className="mb-4 flex items-center justify-between gap-4">
         <div className="relative w-full">
           <Input
-            placeholder="Search..."
+            placeholder="Search invoices..."
             value={globalFilter}
             onChange={(e) => setGlobalFilter(e.target.value)}
             className="pl-10"

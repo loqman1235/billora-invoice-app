@@ -1,0 +1,91 @@
+{
+  "common": {
+    "goBack": "Retour"
+  },
+  "Navbar": {
+    "AvatarDropdown": {
+      "profile": "Profil",
+      "billing": "Facturation",
+      "team": "Équipe",
+      "logout": "Déconnexion"
+    },
+    "LoginButton": "Se connecter",
+    "RegisterButton": "S'inscrire"
+  },
+  "LandingPage": {
+    "HeroSection": {
+      "title": "Créez. Envoyez. Recevez.",
+      "title2": "C'est simple",
+      "description": "Générez des factures en quelques secondes, envoyez-les en un clic et recevez des paiements sans tracas.",
+      "button": "Commencer gratuitement",
+      "button2": "Visiter le tableau de bord"
+    },
+    "Footer": {
+      "copyright": "Par Loqmane Djefafla"
+    }
+  },
+  "Auth": {
+    "SignInPage": {
+      "title": "Connexion",
+      "description": "Connectez-vous à votre compte",
+      "form": {
+        "email": {
+          "label": "E-mail",
+          "placeholder": "Entrez votre e-mail"
+        },
+        "password": {
+          "label": "Mot de passe",
+          "placeholder": "Entrez votre mot de passe"
+        },
+        "or": "ou",
+        "dontHaveAccount": "Vous avez deja un compte?",
+        "signUp": "S'inscrire",
+        "submit": "Se connecter"
+      }
+    },
+
+    "SignUpPage": {
+      "title": "Inscription",
+      "description": "Créez votre compte",
+      "form": {
+        "name": {
+          "label": "Nom d'utilisateur",
+          "placeholder": "Entrez votre nom d'utilisateur"
+        },
+        "email": {
+          "label": "E-mail",
+          "placeholder": "Entrez votre e-mail"
+        },
+        "password": {
+          "label": "Mot de passe",
+          "placeholder": "Entrez votre mot de passe"
+        },
+        "or": "ou",
+        "alreadyHaveAccount": "Vous avez deja un compte?",
+        "signIn": "Se connecter",
+
+        "submit": "S'inscrire"
+      }
+    },
+    "messages": {
+      "errors": {
+        "form": {
+          "name": {
+            "required": "Le nom est requis"
+          },
+          "email": {
+            "required": "L'e-mail est requis",
+            "invalid": "E-mail invalide",
+            "taken": "E-mail deja pris"
+          },
+          "password": {
+            "required": "Le mot de passe est requis"
+          }
+        },
+        "invalidCredentials": "Identifiants invalides",
+        "serverError": "Erreur du serveur"
+      }
+    },
+    "google": "Continuer avec Google"
+  }
+}
