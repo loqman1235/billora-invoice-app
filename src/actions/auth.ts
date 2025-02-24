@@ -206,12 +206,13 @@ export const resendVerificationCodeAction = async (email: string) => {
 };
 
 export const verifyEmailTokenAction = async (token: string) => {
+  const t = await getTranslations("Auth");
   const existingToken = await getVerificationTokenByToken(token);
 
   if (!existingToken) {
     return {
       success: false,
-      error: "Invalid token",
+      error: t("EmailVerification.errors.invalidToken"),
     };
   }
 
@@ -220,7 +221,7 @@ export const verifyEmailTokenAction = async (token: string) => {
   if (hasExpired) {
     return {
       success: false,
-      error: "Token has expired",
+      error: t("EmailVerification.errors.expiredToken"),
     };
   }
 
@@ -229,7 +230,7 @@ export const verifyEmailTokenAction = async (token: string) => {
   if (!existingUser) {
     return {
       success: false,
-      error: "User not found",
+      error: t("EmailVerification.errors.userNotFound"),
     };
   }
 
@@ -244,19 +245,19 @@ export const verifyEmailTokenAction = async (token: string) => {
 
   return {
     success: true,
-    message:
-      "Email verified successfully. You will be redirected in 3 seconds.",
+    message: t("EmailVerification.success.emailVerified"),
   };
 };
 
 export const resendVerificationTokenAction = async (email: string) => {
+  const t = await getTranslations("Auth");
   try {
     const verificationToken = await generateVerificationToken(email);
 
     if (!verificationToken) {
       return {
         success: false,
-        error: "Failed to generate verification token",
+        error: t("EmailVerification.errors.failedToGenerateToken"),
       };
     }
 
@@ -264,13 +265,13 @@ export const resendVerificationTokenAction = async (email: string) => {
 
     return {
       success: true,
-      message: "Verification token sent successfully",
+      message: t("EmailVerification.success.tokenSent"),
     };
   } catch (error) {
     console.log(error);
     return {
       success: false,
-      error: "Something went wrong",
+      error: t("EmailVerification.errors.somethingWentWrong"),
     };
   }
 };

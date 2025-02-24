@@ -65,6 +65,25 @@
         "signIn": "Se connecter",
 
         "submit": "S'inscrire"
+      },
+      "verificationMessage": "Veuillez verifier votre e-mail pour activer votre compte"
+    },
+    "EmailVerification": {
+      "invalidToken": "Jeton de vérification invalide ou manquant",
+      "failedToVerify": "Échec de la vérification de l'e-mail.",
+      "loading": "Vérification de votre e-mail...",
+      "success": {
+        "title": "Succès",
+        "emailVerified": "Votre e-mail a été vérifié. Vous pouvez maintenant vous connecter.",
+        "tokenSent": "Jeton de vérification envoyé avec succès"
+      },
+      "errors": {
+        "title": "Erreur",
+        "invalidToken": "Jeton de vérification invalide ou manquant",
+        "expiredToken": "Le jeton de vérification a expiré",
+        "userNotFound": "Utilisateur non trouvé",
+        "failedToGenerateToken": "Échec de la génération du jeton de vérification",
+        "somethingWentWrong": "Une erreur s'est produite"
       }
     },
     "messages": {

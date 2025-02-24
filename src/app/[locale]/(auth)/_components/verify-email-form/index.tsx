@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import { LoaderCircle, CheckIcon, CircleAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { verifyEmailTokenAction } from "@/actions/auth";
+import { useTranslations } from "next-intl";
 
 export const VerifyEmailForm = () => {
+  const t = useTranslations("Auth");
   const [status, setStatus] = useState<"loading" | "success" | "error">(
     "loading",
   );
@@ -19,7 +21,7 @@ export const VerifyEmailForm = () => {
     const verifyEmail = async () => {
       if (!token) {
         setStatus("error");
-        setMessage("Invalid or missing verification token.");
+        setMessage(t("EmailVerification.invalidToken"));
         return;
       }
 
@@ -42,19 +44,21 @@ export const VerifyEmailForm = () => {
       } catch (error) {
         console.log(error);
         setStatus("error");
-        setMessage("Failed to verify email.");
+        setMessage(t("EmailVerification.failedToVerify"));
       }
     };
 
     verifyEmail();
-  }, [token, router]);
+  }, [token, router, t]);
 
   return (
     <div className="w-full max-w-md rounded-lg bg-white p-6">
       {status === "loading" && (
         <div className="flex flex-col items-center gap-3">
           <LoaderCircle className="size-10 animate-spin text-primary" />
-          <p className="text-sm text-gray-600">Verifying your email...</p>
+          <p className="text-sm text-gray-600">
+            {t("EmailVerification.loading")}
+          </p>
         </div>
       )}
 
@@ -63,8 +67,10 @@ export const VerifyEmailForm = () => {
           <span className="flex items-center justify-center rounded-full bg-emerald-50 p-3 text-emerald-600">
             <CheckIcon className="size-8" />
           </span>
-          <h2 className="text-xl font-bold text-emerald-600">Success!</h2>
-          <p className="text-gray-700">{message}</p>
+          <h2 className="text-xl font-bold text-emerald-600">
+            {t("EmailVerification.success.title")}
+          </h2>
+          <p className="text-center text-gray-700">{message}</p>
         </div>
       )}
 
@@ -74,9 +80,9 @@ export const VerifyEmailForm = () => {
             <CircleAlert className="size-8" />
           </span>
           <h2 className="text-xl font-bold text-red-600">
-            Verification Failed
+            {t("EmailVerification.errors.title")}
           </h2>
-          <p className="text-gray-700">{message}</p>
+          <p className="text-center text-gray-700">{message}</p>
           <Button variant="outline" className="mt-4">
             Try Again
           </Button>

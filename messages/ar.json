@@ -64,6 +64,25 @@
         "alreadyHaveAccount": "هل لديك حساب؟",
         "signIn": "سجل الدخول",
         "submit": "إنشاء حساب"
+      },
+      "verificationMessage": "تم ارسال رسالة التفعيل لبريدك الالكتروني"
+    },
+    "EmailVerification": {
+      "invalidToken": "رمز التحقق غير صالح أو مفقود",
+      "failedToVerify": "فشل في التحقق من البريد الإلكتروني.",
+      "loading": "جارٍ التحقق من بريدك الإلكتروني...",
+      "success": {
+        "title": "نجاح",
+        "emailVerified": "تم التحقق من بريدك الإلكتروني. يمكنك الآن تسجيل الدخول.",
+        "tokenSent": "تم إرسال رمز التحقق بنجاح"
+      },
+      "errors": {
+        "title": "خطأ",
+        "invalidToken": "رمز التحقق غير صالح أو مفقود",
+        "expiredToken": "انتهت صلاحية رمز التحقق",
+        "userNotFound": "المستخدم غير موجود",
+        "failedToGenerateToken": "فشل في إنشاء رمز التحقق",
+        "somethingWentWrong": "حدث خطأ ما"
       }
     },
     "messages": {

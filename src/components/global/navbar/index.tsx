@@ -16,11 +16,14 @@ export const Navbar = async () => {
         <Brand />
 
         {session?.user ? (
-          <UserAvatar
-            name={session.user.name ?? ""}
-            image={session.user.image ?? ""}
-            email={session.user.email ?? ""}
-          />
+          <div className="flex items-center gap-5">
+            <LangSwitcher />
+            <UserAvatar
+              name={session.user.name ?? ""}
+              image={session.user.image ?? ""}
+              email={session.user.email ?? ""}
+            />
+          </div>
         ) : (
           <ul className="flex h-full items-center gap-5">
             <li>

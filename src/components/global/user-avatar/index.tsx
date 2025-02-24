@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { CreditCard, LogOutIcon, UserIcon, Users } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 type Props = {
   name?: string | undefined;
@@ -21,6 +21,7 @@ type Props = {
 
 export const UserAvatar = ({ name, image, email }: Props) => {
   const t = useTranslations("Navbar");
+  const locale = useLocale();
 
   const initials = name ? name.slice(0, 1).toUpperCase() : "U";
   return (
@@ -33,7 +34,10 @@ export const UserAvatar = ({ name, image, email }: Props) => {
           <AvatarImage src={image} alt={name || "Avatar"} />
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-56">
+      <DropdownMenuContent
+        align={locale === "ar" ? "start" : "end"}
+        className="w-56"
+      >
         <DropdownMenuLabel className="flex flex-col">
           <span className="font-semibold">{name || "User"}</span>
           <span className="text-xs text-muted-foreground">

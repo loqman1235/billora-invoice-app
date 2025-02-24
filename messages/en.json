@@ -64,6 +64,25 @@
         "alreadyHaveAccount": "Already have an account?",
         "signIn": "Sign In",
         "submit": "Sign Up"
+      },
+      "verificationMessage": "A verification link has been sent to your email. Please check your inbox."
+    },
+    "EmailVerification": {
+      "invalidToken": "Invalid or missing verification token",
+      "failedToVerify": "Failed to verify email.",
+      "loading": "Verifying your email...",
+      "success": {
+        "title": "Success",
+        "emailVerified": "Your email has been verified. You can now sign in.",
+        "tokenSent": "Verification token sent successfully"
+      },
+      "errors": {
+        "title": "Error",
+        "invalidToken": "Invalid or missing verification token",
+        "expiredToken": "Verification token has expired",
+        "userNotFound": "User not found",
+        "failedToGenerateToken": "Failed to generate verification token",
+        "somethingWentWrong": "Something went wrong"
       }
     },
 

@@ -50,11 +50,9 @@ export const SignUpForm = () => {
   useEffect(() => {
     if (state?.success && state?.data) {
       form.reset();
-      toast.success(
-        "Verification email sent successfully! Check your inbox and follow the instructions to verify your email.",
-      );
+      toast.success(t("SignUpPage.verificationMessage"));
     }
-  }, [form, router, state?.data, state?.success]);
+  }, [form, router, state?.data, state?.success, t]);
 
   return (
     <Form {...form}>
