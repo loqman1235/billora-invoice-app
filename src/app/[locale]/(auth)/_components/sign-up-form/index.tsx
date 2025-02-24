@@ -20,10 +20,11 @@ import { startTransition, useActionState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { GoogleButton } from "../google-button";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export const SignUpForm = () => {
   const t = useTranslations("Auth");
+  const locale = useLocale();
   const signUpSchema = createSignUpSchema(t);
 
   const router = useRouter();
@@ -43,7 +44,7 @@ export const SignUpForm = () => {
 
   const onSubmit = (data: SignUpSchema) => {
     startTransition(() => {
-      formAction(data);
+      formAction({ ...data, locale });
     });
   };
 

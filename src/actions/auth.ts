@@ -15,7 +15,11 @@ import bcrypt from "bcryptjs";
 import { AuthError } from "next-auth";
 import { getTranslations } from "next-intl/server";
 
-export const signUpAction = async (prevState: unknown, data: SignUpSchema) => {
+export const signUpAction = async (
+  prevState: unknown,
+  data: SignUpSchema & { locale: string },
+) => {
+  const { locale } = data;
   const t = await getTranslations("Auth");
   const signUpSchema = createSignUpSchema(t);
   const parsedData = signUpSchema.safeParse(data);
@@ -57,7 +61,7 @@ export const signUpAction = async (prevState: unknown, data: SignUpSchema) => {
     const verificationToken = await generateVerificationToken(email);
 
     // TODO:  send verification code to email
-    await sendVerificationToken(email, verificationToken.token);
+    await sendVerificationToken(email, verificationToken.token, locale);
 
     return {
       success: true,

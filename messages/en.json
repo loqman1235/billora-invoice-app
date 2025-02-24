@@ -106,5 +106,19 @@
       }
     },
     "google": "Continue with Google"
+  },
+  "Emails": {
+    "verificationCode": {
+      "subject": "Verification Code",
+      "body": "Use the code below to verify your email address. This code will expire in 15 minutes.",
+      "ignore": "If you didn’t request this, you can safely ignore this email.",
+      "footer": "© {year} {appName}. All rights reserved."
+    },
+    "verificationToken": {
+      "subject": "Verify Your Email",
+      "body": "Click the button below to verify your email address and complete your registration.",
+      "expire": "This verification link will expire in 30 minutes.",
+      "ignore": "If you didn't request this, you can safely ignore this email."
+    }
   }
 }
