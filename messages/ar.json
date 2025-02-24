@@ -119,5 +119,41 @@
       "expire": "سينتهي صلاحية رابط التحقق هذا خلال 30 دقيقة.",
       "ignore": "إذا لم تطلب هذا، يمكنك تجاهل هذا البريد الإلكتروني بأمان."
     }
+  },
+  "DashboardPage": {
+    "invoices": {
+      "title": "الفواتير",
+      "subtitle": "قم بإدارة وتتبع {invoiceCount} من الفواتير",
+      "createInvoiceBtn": "إنشاء فاتورة",
+      "table": {
+        "search": "ابحث عن الفواتير...",
+        "filter": {
+          "title": "تصفية حسب الحالة",
+          "all": "الكل",
+          "open": "مفتوحة",
+          "paid": "مدفوعة",
+          "void": "ملغاة",
+          "uncollectible": "غير قابلة للتحصيل",
+          "canceled": "ملغاة",
+          "pending": "قيد الانتظار"
+        },
+        "columns": {
+          "customer": "العميل",
+          "email": "البريد الإلكتروني",
+          "date": "التاريخ",
+          "status": "الحالة",
+          "amount": "المبلغ"
+        },
+        "pagination": {
+          "previous": "السابق",
+          "next": "التالي",
+          "index": "الصفحة {page} من {pages}"
+        },
+        "footer": {
+          "total": "المجموع"
+        }
+      },
+      "noInvoices": "لا يوجد فواتير"
+    }
   }
 }

@@ -120,5 +120,42 @@
       "expire": "This verification link will expire in 30 minutes.",
       "ignore": "If you didn't request this, you can safely ignore this email."
     }
+  },
+
+  "DashboardPage": {
+    "invoices": {
+      "title": "Invoices",
+      "subtitle": " Manage and track your {invoiceCount} invoices",
+      "createInvoiceBtn": "Create Invoice",
+      "table": {
+        "search": "Search invoices...",
+        "filter": {
+          "title": "Filter by status",
+          "all": "All",
+          "open": "Open",
+          "paid": "Paid",
+          "void": "Void",
+          "uncollectible": "Uncollectible",
+          "canceled": "Canceled",
+          "pending": "Pending"
+        },
+        "columns": {
+          "customer": "Customer",
+          "email": "Email",
+          "date": "Date",
+          "status": "Status",
+          "amount": "Amount"
+        },
+        "pagination": {
+          "previous": "Previous",
+          "next": "Next",
+          "index": "Page {page} of {pages}"
+        },
+        "footer": {
+          "total": "Total"
+        }
+      },
+      "noInvoices": "No invoices found"
+    }
   }
 }

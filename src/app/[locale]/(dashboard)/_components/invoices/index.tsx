@@ -1,11 +1,13 @@
-import { DataTable } from "@/components/global/data-table";
 import { Button } from "@/components/ui/button";
 import { PlusCircleIcon } from "lucide-react";
 import Link from "next/link";
-import { invoiceColumns } from "../invoice-columns";
 import { prisma } from "@/lib/prisma";
+import { getTranslations } from "next-intl/server";
+import { InvoicesTable } from "../invoices-table";
 
 export const Invoices = async () => {
+  const t = await getTranslations("DashboardPage.invoices");
+
   const invoices = await prisma.invoice.findMany({
     orderBy: { createdAt: "desc" },
   });
@@ -15,22 +17,22 @@ export const Invoices = async () => {
       {/* HEADER */}
       <div className="flex w-full items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight">Invoices</h2>
+          <h2 className="text-2xl font-bold tracking-tight">{t("title")}</h2>
           {invoices.length > 0 && (
             <p className="text-sm text-muted-foreground">
-              Manage and track your {invoices.length} invoices
+              {t("subtitle", { invoiceCount: invoices.length })}
             </p>
           )}
         </div>
         <Button size="sm" asChild>
           <Link href="/dashboard/invoices/new">
-            <PlusCircleIcon className="size-4" /> Create Invoice
+            <PlusCircleIcon className="size-4" /> {t("createInvoiceBtn")}
           </Link>
         </Button>
       </div>
 
       <div>
-        <DataTable columns={invoiceColumns} data={invoices} />
+        <InvoicesTable invoices={invoices} />
       </div>
     </div>
   );

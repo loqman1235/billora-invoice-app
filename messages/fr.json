@@ -120,5 +120,41 @@
       "expire": "Ce lien de vérification expirera dans 30 minutes.",
       "ignore": "Si vous n'avez pas demandé cela, vous pouvez ignorer cet e-mail en toute sécurité."
     }
+  },
+  "DashboardPage": {
+    "invoices": {
+      "title": "Factures",
+      "subtitle": "Gérez et suivez vos {invoiceCount} factures",
+      "createInvoiceBtn": "Créer une facture",
+      "table": {
+        "search": "Rechercher des factures...",
+        "filter": {
+          "title": "Filtrer par statut",
+          "all": "Toutes",
+          "open": "Ouverte",
+          "paid": "Payée",
+          "void": "Annulée",
+          "uncollectible": "Irrécouvrable",
+          "canceled": "Annulée",
+          "pending": "En attente"
+        },
+        "columns": {
+          "customer": "Client",
+          "email": "E-mail",
+          "date": "Date",
+          "status": "Statut",
+          "amount": "Montant"
+        },
+        "pagination": {
+          "previous": "Précédent",
+          "next": "Suivant",
+          "index": "Page {page} de {pages}"
+        },
+        "footer": {
+          "total": "Total"
+        }
+      },
+      "noInvoices": "Aucune facture pour le moment"
+    }
   }
 }
