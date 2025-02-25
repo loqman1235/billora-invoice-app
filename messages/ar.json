@@ -153,6 +153,28 @@
           "total": "المجموع"
         }
       },
+      "create": {
+        "title": "إنشاء فاتورة جديدة",
+        "form": {
+          "billingName": {
+            "label": "اسم العميل",
+            "placeholder": "أدخل اسم العميل"
+          },
+          "billingEmail": {
+            "label": "بريد العميل",
+            "placeholder": "أدخل بريد العميل"
+          },
+          "amount": {
+            "label": "المبلغ",
+            "placeholder": "أدخل المبلغ"
+          },
+          "description": {
+            "label": "الوصف",
+            "placeholder": "أدخل وصفا"
+          },
+          "submit": "إنشاء فاتورة"
+        }
+      },
       "noInvoices": "لا يوجد فواتير"
     }
   }

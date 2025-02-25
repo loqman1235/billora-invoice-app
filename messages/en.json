@@ -155,6 +155,28 @@
           "total": "Total"
         }
       },
+      "create": {
+        "title": "Create new invoice",
+        "form": {
+          "billingName": {
+            "label": "Billing Name",
+            "placeholder": "Enter billing name"
+          },
+          "billingEmail": {
+            "label": "Billing Email",
+            "placeholder": "Enter billing email"
+          },
+          "amount": {
+            "label": "Amount",
+            "placeholder": "Enter amount"
+          },
+          "description": {
+            "label": "Description",
+            "placeholder": "Enter description"
+          },
+          "submit": "Create Invoice"
+        }
+      },
       "noInvoices": "No invoices found"
     }
   }

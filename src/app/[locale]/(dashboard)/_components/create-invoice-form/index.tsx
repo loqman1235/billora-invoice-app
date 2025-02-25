@@ -18,12 +18,15 @@ import {
 } from "@/lib/schemas/create-invoice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoaderCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useActionState, useEffect, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 export const CreateInvoiceForm = () => {
+  const t = useTranslations("DashboardPage.invoices.create");
+
   const form = useForm<CreateInvoiceSchema>({
     resolver: zodResolver(createInvoiceSchema),
     defaultValues: {
@@ -60,9 +63,12 @@ export const CreateInvoiceForm = () => {
           name="billingName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Billing Name</FormLabel>
+              <FormLabel>{t("form.billingName.label")}</FormLabel>
               <FormControl>
-                <Input placeholder="John Doe" {...field} />
+                <Input
+                  placeholder={t("form.billingName.placeholder")}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -74,9 +80,12 @@ export const CreateInvoiceForm = () => {
           name="billingEmail"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Billing Email</FormLabel>
+              <FormLabel>{t("form.billingEmail.label")}</FormLabel>
               <FormControl>
-                <Input placeholder="johndoe@example.com" {...field} />
+                <Input
+                  placeholder={t("form.billingEmail.placeholder")}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -88,7 +97,7 @@ export const CreateInvoiceForm = () => {
           name="amount"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Amount</FormLabel>
+              <FormLabel>{t("form.amount.label")}</FormLabel>
               <FormControl>
                 <Input type="number" {...field} />
               </FormControl>
@@ -102,9 +111,12 @@ export const CreateInvoiceForm = () => {
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Billing Email</FormLabel>
+              <FormLabel>{t("form.description.label")}</FormLabel>
               <FormControl>
-                <Textarea placeholder="Description" {...field} />
+                <Textarea
+                  placeholder={t("form.description.placeholder")}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -115,7 +127,7 @@ export const CreateInvoiceForm = () => {
           {isPending ? (
             <LoaderCircle className="animate-spin" />
           ) : (
-            "Create Invoice"
+            t("form.submit")
           )}
         </Button>
       </form>

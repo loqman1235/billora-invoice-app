@@ -154,6 +154,28 @@
           "total": "Total"
         }
       },
+      "create": {
+        "title": "Créer une nouvelle facture",
+        "form": {
+          "billingName": {
+            "label": "Nom de facturation",
+            "placeholder": "Entrez le nom de facturation"
+          },
+          "billingEmail": {
+            "label": "E-mail de facturation",
+            "placeholder": "Entrez l'e-mail de facturation"
+          },
+          "amount": {
+            "label": "Montant",
+            "placeholder": "Entrez le montant"
+          },
+          "description": {
+            "label": "Description",
+            "placeholder": "Entrez la description"
+          },
+          "submit": "Créer la facture"
+        }
+      },
       "noInvoices": "Aucune facture pour le moment"
     }
   }
