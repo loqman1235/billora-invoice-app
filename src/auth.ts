@@ -5,8 +5,6 @@ import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { v4 as uuid } from "uuid";
-import { encode as defaultEncode } from "next-auth/jwt";
 import { authConfig } from "./auth.config";
 
 // Validate required environment variables
@@ -25,6 +23,9 @@ if (!process.env.AUTH_GOOGLE_ID || !process.env.AUTH_GOOGLE_SECRET) {
 export const { handlers, signIn, signOut, auth } = NextAuth({
   ...authConfig,
   adapter: PrismaAdapter(prisma),
+  session: {
+    strategy: "jwt", // Use JWT strategy for all providers
+  },
   providers: [
     GitHub({
       clientId: process.env.AUTH_GITHUB_ID!,
@@ -70,36 +71,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, account }) {
-      if (account?.provider === "credentials") {
-        token.credentials = true;
+    async jwt({ token, user }) {
+      // Add user info to token on sign in
+      if (user) {
+        token.id = user.id;
       }
       return token;
     },
-  },
-
-  jwt: {
-    encode: async function (params) {
-      if (params.token?.credentials) {
-        const sessionToken = uuid();
-
-        if (!params.token.sub) {
-          throw new Error("No user ID found in token");
-        }
-
-        const createdSession = await PrismaAdapter(prisma).createSession!({
-          sessionToken: sessionToken,
-          userId: params.token.sub,
-          expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
-        });
-
-        if (!createdSession) {
-          throw new Error("Failed to create session");
-        }
-
-        return sessionToken;
+    async session({ session, token }) {
+      // Add user id to session
+      if (session.user) {
+        session.user.id = token.id as string;
       }
-      return defaultEncode(params);
+      return session;
     },
   },
 
