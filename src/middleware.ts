@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { DEFAULT_REDIRECT, PUBLIC_ROUTES, ROOT } from "./lib/routes";
-import { auth } from "./auth";
+import NextAuth from "next-auth";
+import { authConfig } from "./auth.config";
 import createIntlMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
+
+const { auth } = NextAuth(authConfig);
 
 // Create the next-intl middleware
 const intlMiddleware = createIntlMiddleware(routing);
